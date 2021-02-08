@@ -45,7 +45,7 @@ class Roles(commands.Cog):
         user = ctx.message.author
         knownrole = discord.utils.get(ctx.guild.roles, name=f"{role}")
         await user.remove_roles(knownrole)
-        await ctx.send(f"{user.mention}, your role **{pendingRole}**, has been removed")
+        await ctx.send(f"{user.mention}, your role **{role}**, has been removed")
 
     @removerole.error
     async def removerole_error(self, ctx, error):

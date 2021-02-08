@@ -7,9 +7,10 @@ class Fcommands(commands.Cog):
         self.client = client
 
     #events
-    @commands.Cog.listener()
-    async def on_ready(self):
-        print('Bot is online')
+    #@commands.Cog.listener()
+
+
+
 
     #commands
     @commands.command()
