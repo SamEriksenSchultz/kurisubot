@@ -9,7 +9,7 @@ client = commands.Bot(command_prefix='.')
 async def on_ready():
     print('Bot is online')
     activity = discord.Game(name="osu!")
-    await client.change_presence(status=discord.Status.idle, activity=activity)
+    await client.change_presence(status=discord.Status.online, activity=activity)
 
 
 
@@ -62,4 +62,4 @@ for filename in os.listdir('./cogs'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
 
-client.run('Nzk3NTI1NDM0NzA2NjkwMTE5.X_nvcA.ZzlaNlzXaH21L_SSgGRE_dndHm4')
+client.run('Nzk3NTI1NDM0NzA2NjkwMTE5.X_nvcA.msuBdo0TYVFmVPoVaaeAd3HJyJc')
