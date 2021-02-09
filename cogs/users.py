@@ -33,8 +33,59 @@ class Users(commands.Cog):
                 await ctx.guild.unban(user)
                 await ctx.send(f"Unbanned {user.name}#{user.discriminator}")
 
+    @commands.has_permissions(administrator=True)
+    @commands.command()
+    async def mute(self, ctx, member: discord.Member, *, reason=None):
+        sender = ctx.message.author
+        channel = member.voice.channel
+        await member.edit(reason=f"muted via command by {sender}", mute=True)
+
+        await ctx.send(f"{member} has been muted")
+
+    @mute.error
+    async def mute_error(self, ctx, error):
+        raise error
+
+    @commands.has_permissions(administrator=True)
+    @commands.command()
+    async def unmute(self, ctx, member: discord.Member, *, reason=None):
+        sender = ctx.message.author
+        channel = member.voice.channel
+        await member.edit(reason=f"unmuted via command by {sender}", mute=False)
+
+        await ctx.send(f"{member} has been unmuted")
+
+    @unmute.error
+    async def mute_error(self, ctx, error):
+        raise error
 
 
+    @commands.has_permissions(administrator=True)
+    @commands.command()
+    async def deafen(self, ctx, member: discord.Member, *, reason=None):
+        sender = ctx.message.author
+        channel = member.voice.channel
+        await member.edit(reason=f"deafened via command by {sender}", deafen=True)
+
+        await ctx.send(f"{member} has been deafened")
+
+    @deafen.error
+    async def deafen_error(self, ctx, error):
+        raise error
+
+
+    @commands.has_permissions(administrator=True)
+    @commands.command()
+    async def undeafen(self, ctx, member: discord.Member, *, reason=None):
+        sender = ctx.message.author
+        channel = member.voice.channel
+        await member.edit(reason=f"undeafened via command by {sender}", deafen=False)
+
+        await ctx.send(f"{member} has been undeafened")
+
+    @undeafen.error
+    async def undeafen_error(self, ctx, error):
+        raise error
 
 def setup(client):
     client.add_cog(Users(client))
